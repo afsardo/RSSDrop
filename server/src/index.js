@@ -7,7 +7,18 @@ const port = 3000;
 // Controllers
 
 function handleRssfeed(req, res) {
-    return jsonResponse(res, { message: "Done." });
+    let data = {
+        message: "RSS feed properly parsed.",
+        data: undefined
+    };
+
+    const rssUrl = req.query.rss_url;
+    if (!required(rssUrl) || ! validUrl(rssUrl)) {
+        data.message = "Invalid url";
+        return jsonResponse(res, data, 422);
+    }
+
+    return jsonResponse(res, data);
 }
 
 // Helpers
@@ -22,6 +33,13 @@ function jsonResponse(res, data, statusCode) {
 
 // Validation
 
+function required(value) {
+    return value !== undefined;
+}
+
+function validUrl(value) {
+    return /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/.test(value);
+}
 
 // Routes
 
