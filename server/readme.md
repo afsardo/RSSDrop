@@ -1,13 +1,21 @@
 # RSS API Server
 
+> A node.js server that comunicates with RSS to JSON api.
+
 ## Installation
 
-``$ yarn``
+``` bash
+$ yarn
+```
 
 ## Build
 
-``$ npm run dev``
+``` bash
+$ npm run dev
+```
 
 ## Run
 
-``$ node dist/index.js``
+``` bash
+$ node dist/index.js
+```
