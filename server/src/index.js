@@ -18,7 +18,31 @@ function handleRssfeed(req, res) {
         return jsonResponse(res, data, 422);
     }
 
-    return jsonResponse(res, data);
+    axios.get("https://api.rss2json.com/v1/api.json?rss_url=" + rssUrl).then(response => {
+        const status = response.data.status;
+        if (status == "ok") {
+            console.log("RSS feed properly parsed.");
+            const items = _.map(response.data.items, item => {
+                console.log("Link: " + item.link + " | Title: " + item.title + " | Description: " + item.description);
+                return {
+                    link: item.link, 
+                    title: item.title, 
+                    descriptionc: item.description
+                };
+            });
+
+            data.data = items;
+            return jsonResponse(res, data);
+        }
+
+        data.message = "Invalid feed";
+        jsonResponse(res, data, 422);
+    }).catch(error => {
+        console.error("There was an error: " + error);
+
+        data.message = "Invalid url";
+        jsonResponse(res, data, 422);
+    });
 }
 
 // Helpers
