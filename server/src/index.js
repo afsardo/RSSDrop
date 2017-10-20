@@ -28,7 +28,7 @@ function handleRssfeed(req, res) {
                 return {
                     link: item.link, 
                     title: item.title, 
-                    descriptionc: item.description
+                    description: item.description
                 };
             });
 
