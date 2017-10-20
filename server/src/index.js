@@ -1,6 +1,7 @@
 const _ = require('underscore');
 const axios = require('axios');
 const express = require('express');
+const cors = require('cors')
 const app = express();
 const port = 3000;
 
@@ -64,6 +65,10 @@ function required(value) {
 function validUrl(value) {
     return /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/.test(value);
 }
+
+// Config Server
+
+app.use(cors());
 
 // Routes
 
