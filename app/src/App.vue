@@ -1,28 +1,23 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+    <h1 class="text-center">RSS Feeds</h1>
+    <RSSFeed/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import RSSFeed from './components/RSSFeed'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    RSSFeed
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  padding: 20px;
 }
 </style>
